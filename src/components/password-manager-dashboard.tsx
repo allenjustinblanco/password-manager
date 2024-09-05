@@ -43,6 +43,7 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Toaster } from "@/components/ui/toaster";
+import Confetti from "react-confetti";
 
 type Password = {
   id: number;
@@ -121,6 +122,7 @@ export function PasswordManagerDashboard() {
     useNumbers: true,
     useUppercase: true,
   });
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const categories = ["Personal", "Work", "Finance", "Social", "Other"];
 
@@ -260,6 +262,8 @@ export function PasswordManagerDashboard() {
           title: "Password Added",
           description: `New password for ${formData.website} has been added.`,
         });
+        setShowConfetti(true);
+        setTimeout(() => setShowConfetti(false), 5000); // Hide confetti after 5 seconds
       }
       closeDrawer();
     }
@@ -312,6 +316,7 @@ export function PasswordManagerDashboard() {
   return (
     <div className="container mx-auto mt-10 p-4 text-black dark:text-white">
       <Toaster />
+      {showConfetti && <Confetti />}
       <h1 className="text-3xl font-bold mb-6">Password Manager Dashboard</h1>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-6">
@@ -387,7 +392,7 @@ export function PasswordManagerDashboard() {
                 <TableRow>
                   <TableHead>Website</TableHead>
                   <TableHead>Username</TableHead>
-                  <TableHead>Passwor</TableHead>
+                  <TableHead>Password</TableHead>
                   <TableHead>Category</TableHead>
                   <TableHead>Strength</TableHead>
                   <TableHead>Last Updated</TableHead>
@@ -400,7 +405,9 @@ export function PasswordManagerDashboard() {
                     <TableCell>{pw.website}</TableCell>
                     <TableCell>{pw.username}</TableCell>
                     <TableCell className="flex items-center space-x-2">
-                      <span>{showPasswords ? pw.password : "••••••••"}</span>
+                      <span className="w-24 truncate">
+                        {showPasswords ? pw.password : "••••••••"}
+                      </span>
                       <Button
                         variant="ghost"
                         size="icon"
