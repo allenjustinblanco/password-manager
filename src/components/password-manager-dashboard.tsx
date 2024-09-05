@@ -42,6 +42,7 @@ import {
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
+import { Toaster } from "@/components/ui/toaster";
 
 type Password = {
   id: number;
@@ -243,6 +244,10 @@ export function PasswordManagerDashboard() {
               : pw,
           ),
         );
+        toast({
+          title: "Password Updated",
+          description: `Password for ${formData.website} has been updated.`,
+        });
       } else {
         // Add new password
         const newPassword = {
@@ -251,6 +256,10 @@ export function PasswordManagerDashboard() {
           lastUpdated: now,
         };
         setPasswords([...passwords, newPassword]);
+        toast({
+          title: "Password Added",
+          description: `New password for ${formData.website} has been added.`,
+        });
       }
       closeDrawer();
     }
@@ -269,6 +278,11 @@ export function PasswordManagerDashboard() {
   const handleDelete = () => {
     if (currentPassword) {
       setPasswords(passwords.filter((pw) => pw.id !== currentPassword.id));
+      toast({
+        title: "Password Deleted",
+        description: `Password for ${currentPassword.website} has been deleted.`,
+        variant: "destructive",
+      });
     }
     closeDeleteDialog();
   };
@@ -297,6 +311,7 @@ export function PasswordManagerDashboard() {
 
   return (
     <div className="container mx-auto mt-10 p-4 text-black dark:text-white">
+      <Toaster />
       <h1 className="text-3xl font-bold mb-6">Password Manager Dashboard</h1>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-6">
