@@ -44,6 +44,7 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Toaster } from "@/components/ui/toaster";
 import Confetti from "react-confetti";
+import { ModeToggle } from "@/components/mode-toggle";
 
 type Password = {
   id: number;
@@ -317,8 +318,10 @@ export function PasswordManagerDashboard() {
     <div className="container mx-auto mt-10 p-4 text-black dark:text-white">
       <Toaster />
       {showConfetti && <Confetti />}
-      <h1 className="text-3xl font-bold mb-6">Password Manager Dashboard</h1>
-
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-3xl font-bold">Password Manager Dashboard</h1>
+        <ModeToggle />
+      </div>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-6">
         <Card>
           <CardHeader>
