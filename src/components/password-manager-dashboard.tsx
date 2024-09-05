@@ -315,7 +315,7 @@ export function PasswordManagerDashboard() {
   };
 
   return (
-    <div className="container mx-auto mt-10 p-4 text-black dark:text-white">
+    <div className="container mx-auto sm:mt-10 p-4 text-black dark:text-white">
       <Toaster />
       {showConfetti && <Confetti />}
       <div className="flex items-center justify-between mb-6">
@@ -482,7 +482,7 @@ export function PasswordManagerDashboard() {
       </Card>
 
       <Sheet open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
-        <SheetContent className="min-w-[350px] bg-white dark:bg-neutral-800 text-black dark:text-white">
+        <SheetContent className="min-w-[350px] bg-white dark:bg-black text-black dark:text-white">
           <SheetHeader>
             <SheetTitle>
               {currentPassword ? "Edit Password" : "Add New Password"}
@@ -658,7 +658,7 @@ export function PasswordManagerDashboard() {
         open={isDeleteDialogOpen}
         onOpenChange={setIsDeleteDialogOpen}
       >
-        <AlertDialogContent className="w-[400px] sm:w-[540px] bg-white dark:bg-neutral-800 text-black dark:text-white">
+        <AlertDialogContent className="w-[400px] sm:w-[540px] bg-white dark:bg-black text-black dark:text-white">
           <AlertDialogHeader>
             <AlertDialogTitle>
               Are you sure you want to delete this password?

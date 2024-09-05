@@ -77,12 +77,7 @@ export function SidebarDemo() {
   };
 
   return (
-    <div
-      className={cn(
-        "rounded-md flex flex-col md:flex-row bg-gray-100 dark:bg-neutral-800 w-full flex-1 max-w-full mx-auto border border-neutral-200 dark:border-neutral-700",
-        "h-screen",
-      )}
-    >
+    <div className="rounded-md flex flex-col md:flex-row  w-full flex-1 max-w-full mx-auto bg-white dark:bg-black border border-neutral-200 dark:border-neutral-700 h-screen">
       <Sidebar open={open} setOpen={setOpen}>
         <SidebarBody className="justify-between gap-10">
           <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
